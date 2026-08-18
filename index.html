@@ -1,487 +1,2015 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alla China Venkata Reddy - 27+ Years Expert in Integrated Solid Waste Management, Legacy Waste & Environmental Engineering Consultancy.">
-    <title>Alla China Venkata Reddy | Advanced SWM & Engineering Consultancy</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACVR Consultancy | Advanced SWM & Environmental Engineering</title>
+<meta name="description" content="Alla China Venkata Reddy - 27+ Years Expert in Integrated Solid Waste Management, Legacy Waste & Environmental Engineering Consultancy.">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], },
-                    colors: {
-                        corporate: {
-                            green: '#0F7A41',
-                            lightGreen: '#E6F4EA',
-                            blue: '#0A2540',
-                            lightBlue: '#EBF4FF'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        .fade-in { animation: fadeIn 1.2s ease-in-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-overlay {
-            background: linear-gradient(90deg, rgba(10,37,64,0.95) 0%, rgba(15,122,65,0.7) 100%);
-        }
-        .timeline-border {
-            border-left: 2px solid #E6F4EA;
-        }
-    </style>
+<style>
+:root {
+  --bg: #07090a;
+  --bg-2: #0c1110;
+  --surface: #121815;
+  --border: rgba(76, 175, 80, 0.12);
+  --border-strong: rgba(76, 175, 80, 0.3);
+  --fg: #f0f4f1;
+  --fg-dim: #8a948e;
+  --muted: #4a524d;
+  --green: #2e7d52;
+  --green-bright: #4caf50;
+  --green-glow: #00ff9d;
+  --amber: #d4a574;
+  --amber-bright: #e8b574;
+  --warm: #c2410c;
+  --earth: #4a3b2a;
+  --serif: 'Fraunces', serif;
+  --sans: 'Space Grotesk', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+::selection { background: var(--green-bright); color: var(--bg); }
+a, button, input, textarea, select { cursor: none; }
+
+/* Custom Cursor */
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--green-glow);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease, width 0.3s, height 0.3s;
+}
+.cursor-ring {
+  position: fixed;
+  width: 40px; height: 40px;
+  border: 1px solid var(--green-bright);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), width 0.3s, height 0.3s, border-color 0.3s;
+}
+.cursor.hover { width: 0; height: 0; }
+.cursor-ring.hover { width: 80px; height: 80px; border-color: var(--amber-bright); }
+
+/* Preloader */
+.preloader {
+  position: fixed; inset: 0; z-index: 9998;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 2rem;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+.preloader.done { opacity: 0; visibility: hidden; }
+.preloader-mark {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 300;
+  color: var(--green-bright);
+  letter-spacing: -0.03em;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.preloader-mark span { color: var(--fg); }
+.preloader-mark i { font-size: 2.5rem; color: var(--amber); }
+.preloader-mark::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  height: 1px; width: 0; background: var(--green-bright);
+  animation: drawLine 1.4s 0.3s ease forwards;
+}
+@keyframes drawLine { to { width: 100%; } }
+.preloader-text {
+  font-size: 0.75rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--fg-dim);
+  opacity: 0; animation: fadeIn 0.6s 0.8s forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* Nav */
+nav.top {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.4s;
+}
+nav.top.scrolled {
+  padding: 1rem 3rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(7, 9, 10, 0.85);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 1.4rem; font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none;
+}
+.nav-brand-dot {
+  width: 10px; height: 10px;
+  background: var(--green-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--green-glow);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.nav-brand-text small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+  margin-top: 2px;
+}
+.nav-links {
+  display: flex; gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--fg-dim);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--green-bright);
+  transition: width 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--green-bright); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--green-bright);
+  color: var(--green-bright);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+.nav-cta::before {
+  content: ''; position: absolute;
+  inset: 0; background: var(--green-bright);
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  z-index: -1;
+}
+.nav-cta:hover { color: var(--bg); }
+.nav-cta:hover::before { transform: translateY(0); }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 0 3rem;
+  overflow: hidden;
+}
+#hero-canvas {
+  position: absolute; inset: 0;
+  z-index: 1;
+}
+.hero::before {
+  content: ''; position: absolute;
+  inset: 0; z-index: 2;
+  background: radial-gradient(ellipse at center, transparent 0%, var(--bg) 90%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 6rem;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s forwards;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-strong);
+  background: rgba(46, 125, 82, 0.05);
+  backdrop-filter: blur(10px);
+}
+.hero-eyebrow i { color: var(--amber); }
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin-bottom: 2.5rem;
+  max-width: 16ch;
+}
+.hero h1 .accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--green-bright);
+}
+.hero h1 .amber-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--amber-bright);
+}
+.hero h1 .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px) rotateX(-30deg);
+  transform-origin: bottom;
+  animation: wordIn 1s forwards;
+}
+@keyframes wordIn {
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--fg-dim);
+  max-width: 600px;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeUp 1s 1.6s forwards;
+}
+.hero-actions {
+  display: flex; gap: 2rem; align-items: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s 1.9s forwards;
+}
+.btn-primary {
+  padding: 1.1rem 2rem;
+  background: var(--green-bright);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  border: none;
+  font-family: var(--sans);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover {
+  background: var(--green-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+}
+.btn-primary i { transition: transform 0.3s; }
+.btn-primary:hover i { transform: translateX(4px); }
+.btn-ghost {
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  position: relative;
+  padding-bottom: 4px;
+}
+.btn-ghost::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 1px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s;
+}
+.btn-ghost:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.btn-ghost:hover { color: var(--amber-bright); }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  opacity: 0;
+  animation: fadeUp 1s 2.5s forwards;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: rgba(76, 175, 80, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 30%;
+  background: var(--green-bright);
+  animation: scrollDown 2s infinite;
+}
+@keyframes scrollDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(330%); }
+}
+
+/* Section common */
+section { position: relative; padding: 8rem 3rem; }
+.container { max-width: 1400px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+  margin-bottom: 2rem;
+}
+.section-label::before {
+  content: ''; width: 2rem; height: 1px;
+  background: var(--green-bright);
+}
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+.section-heading .italic {
+  font-style: italic;
+  color: var(--amber-bright);
+}
+.section-heading .green-italic {
+  font-style: italic;
+  color: var(--green-bright);
+}
+.section-intro {
+  font-size: 1.05rem;
+  color: var(--fg-dim);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About */
+.about {
+  position: relative;
+  background: var(--bg);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.about-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s;
+}
+.about-tag.amber { border-color: rgba(212, 165, 116, 0.3); color: var(--amber-bright); }
+.about-tag.green { border-color: rgba(76, 175, 80, 0.3); color: var(--green-bright); }
+
+.about-text p {
+  font-size: 1.05rem;
+  color: var(--fg-dim);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.about-text p strong {
+  color: var(--fg);
+  font-weight: 500;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+.stat-item .num {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--amber-bright);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stat-item .num span { color: var(--green-bright); }
+.stat-item .label {
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.about-visual {
+  position: relative;
+  height: 600px;
+}
+#about-canvas {
+  width: 100%; height: 100%;
+}
+.about-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+.about-frame::before, .about-frame::after {
+  content: ''; position: absolute;
+  width: 20px; height: 20px;
+  border: 2px solid var(--green-bright);
+}
+.about-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.about-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+/* Expertise */
+.expertise {
+  background: var(--bg-2);
+  position: relative;
+}
+.expertise::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+}
+.expertise-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.expertise-card {
+  background: var(--bg-2);
+  padding: 3rem 2.5rem;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+.expertise-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--green-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.expertise-card:hover::before { transform: scaleX(1); }
+.expertise-card:hover { background: var(--surface); }
+.expertise-num {
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  color: var(--amber);
+  margin-bottom: 2rem;
+  letter-spacing: 0.15em;
+  font-style: italic;
+}
+.expertise-icon {
+  width: 60px; height: 60px;
+  margin-bottom: 2rem;
+  color: var(--green-bright);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+  transition: all 0.4s;
+  font-size: 1.5rem;
+}
+.expertise-card:hover .expertise-icon {
+  border-color: var(--green-bright);
+  background: rgba(76, 175, 80, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.1);
+}
+.expertise-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.expertise-desc {
+  color: var(--fg-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Torrefaction */
+.torrefaction {
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+  padding: 0;
+}
+#torrefaction-canvas {
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+.torrefaction-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 10rem 3rem;
+}
+.torrefaction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: center;
+}
+.torrefaction-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.tor-feature {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  background: rgba(12, 17, 16, 0.6);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+.tor-feature:hover {
+  border-color: var(--amber);
+  transform: translateY(-4px);
+}
+.tor-feature i {
+  color: var(--amber-bright);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.tor-feature h4 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--fg);
+}
+.tor-feature p {
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  line-height: 1.6;
+}
+
+.tor-visual {
+  position: relative;
+  height: 600px;
+  border: 1px solid var(--border-strong);
+  background: rgba(0,0,0,0.3);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+#tor-visual-canvas {
+  width: 100%; height: 100%;
+}
+.tor-visual-text {
+  position: absolute;
+  bottom: 2rem; left: 2rem; right: 2rem;
+  border-left: 3px solid var(--amber);
+  padding-left: 1.5rem;
+}
+.tor-visual-text p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+/* Portfolio */
+.portfolio {
+  background: var(--bg-2);
+  position: relative;
+}
+.portfolio::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+}
+.portfolio-category {
+  margin-bottom: 5rem;
+}
+.portfolio-cat-header {
+  display: flex; align-items: center; gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+.portfolio-cat-header h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--fg);
+}
+.portfolio-cat-header span {
+  font-size: 0.75rem;
+  color: var(--green-bright);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.portfolio-item {
+  background: var(--surface);
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-item.amber { border-left-color: var(--amber); }
+.portfolio-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.portfolio-item h4 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--fg);
+}
+.portfolio-role {
+  font-size: 0.7rem;
+  color: var(--amber-bright);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+.portfolio-desc {
+  font-size: 0.9rem;
+  color: var(--fg-dim);
+  line-height: 1.6;
+}
+
+/* Committees */
+.committees {
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+}
+#committees-canvas {
+  position: absolute; inset: 0;
+  z-index: 0; opacity: 0.3;
+}
+.committees .container { position: relative; z-index: 1; }
+.committees-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.committee-card {
+  background: rgba(12, 17, 16, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  position: relative;
+  margin-bottom: 2rem;
+}
+.committee-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 40px; height: 40px;
+  border-top: 1px solid var(--green-bright);
+  border-left: 1px solid var(--green-bright);
+}
+.committee-card h4 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--green-bright);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.committee-list {
+  list-style: none;
+}
+.committee-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--fg-dim);
+  line-height: 1.6;
+}
+.committee-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 8px; height: 8px;
+  background: var(--green-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+/* Contact */
+.contact {
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.contact-info p {
+  color: var(--fg-dim);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 480px;
+}
+.contact-detail {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  align-items: center;
+}
+.contact-detail:last-of-type { border-bottom: 1px solid var(--border); }
+.contact-detail-icon {
+  width: 48px; height: 48px;
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green-bright);
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+.contact-detail:hover .contact-detail-icon {
+  background: var(--green-bright);
+  color: var(--bg);
+  border-color: var(--green-bright);
+}
+.contact-detail-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 0.25rem;
+}
+.contact-detail-value {
+  color: var(--fg);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+}
+.contact-detail-value:hover { color: var(--green-bright); }
+
+.contact-form {
+  background: rgba(18, 24, 21, 0.6);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.contact-form::before, .contact-form::after {
+  content: '';
+  position: absolute;
+  width: 60px; height: 60px;
+}
+.contact-form::before {
+  top: -1px; left: -1px;
+  border-top: 1px solid var(--green-bright);
+  border-left: 1px solid var(--green-bright);
+}
+.contact-form::after {
+  bottom: -1px; right: -1px;
+  border-bottom: 1px solid var(--amber);
+  border-right: 1px solid var(--amber);
+}
+.form-group { margin-bottom: 1.75rem; }
+.form-group label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 0.75rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--green-bright); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select option { background: var(--surface); color: var(--fg); }
+.contact-form button {
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+/* Footer */
+footer {
+  background: var(--bg);
+  padding: 5rem 3rem 2rem;
+  border-top: 1px solid var(--border);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.footer-tagline {
+  color: var(--fg-dim);
+  max-width: 400px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.footer-col h4 {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.85rem; }
+.footer-col a {
+  color: var(--fg-dim);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--green-bright); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--green-bright);
+  border-left-width: 3px;
+  padding: 1rem 1.5rem;
+  color: var(--fg);
+  z-index: 1000;
+  transform: translateY(150%);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex; align-items: center; gap: 1rem;
+  max-width: 360px;
+}
+.toast i { color: var(--green-bright); font-size: 1.2rem; }
+.toast.show { transform: translateY(0); }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--green-bright);
+  outline-offset: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .torrefaction-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  a, button, input, textarea, select { cursor: pointer; }
+  .cursor, .cursor-ring { display: none; }
+  nav.top { padding: 1rem 1.5rem; }
+  nav.top.scrolled { padding: 0.75rem 1.5rem; }
+  .nav-links { display: none; }
+  section { padding: 5rem 1.5rem; }
+  .hero { padding: 0 1.5rem; }
+  .about-grid, .committees-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .expertise-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; }
+  .torrefaction-features { grid-template-columns: 1fr; }
+  .torrefaction-overlay { padding: 5rem 1.5rem; }
+  .contact-form { padding: 2rem; }
+  .about-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+</style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-corporate-green selection:text-white">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-3">
-                        <i class="fa-solid fa-leaf text-corporate-green text-3xl"></i>
-                        <div>
-                            <h1 class="font-bold text-xl text-corporate-blue tracking-tight">ACVR CONSULTANCY</h1>
-                            <p class="text-[10px] uppercase text-corporate-green font-semibold tracking-widest">Solid Waste Management</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-corporate-green font-medium transition-colors text-sm xl:text-base">About</a>
-                    <a href="#expertise" class="text-gray-600 hover:text-corporate-green font-medium transition-colors text-sm xl:text-base">Expertise</a>
-                    <a href="#torrefaction" class="text-corporate-green font-bold transition-colors flex items-center gap-1 text-sm xl:text-base"><i class="fa-solid fa-fire-flame-simple"></i> Torrefaction</a>
-                    <a href="#portfolio" class="text-gray-600 hover:text-corporate-green font-medium transition-colors text-sm xl:text-base">Project Portfolio</a>
-                    <a href="#committees" class="text-gray-600 hover:text-corporate-green font-medium transition-colors text-sm xl:text-base">Govt. Advisory</a>
-                    <a href="#contact" class="bg-corporate-green hover:bg-green-800 text-white px-5 xl:px-6 py-2.5 rounded-sm font-semibold transition-all duration-300 shadow-md text-sm xl:text-base">Contact Us</a>
-                </div>
-            </div>
+<!-- Custom Cursor -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader-mark"><i class="fa-solid fa-leaf"></i> ACVR<span>.</span></div>
+  <div class="preloader-text">SWM · Legacy Waste · Green Coal</div>
+</div>
+
+<!-- Nav -->
+<nav class="top" id="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    <div class="nav-brand-text">
+      ACVR Consultancy
+      <small>Solid Waste Management</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#torrefaction">Torrefaction</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#committees">Govt. Advisory</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact Us</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <i class="fa-solid fa-award"></i>
+      27+ Years of Engineering Excellence
+    </div>
+    <h1>
+      <span class="word" style="animation-delay:0.7s">Mastering</span>
+      <span class="word" style="animation-delay:0.82s">Integrated</span>
+      <span class="word green-italic" style="animation-delay:0.94s">Solid Waste</span>
+      <span class="word" style="animation-delay:1.06s">&</span>
+      <span class="word amber-accent" style="animation-delay:1.18s">Legacy Waste</span>
+      <span class="word" style="animation-delay:1.3s">Solutions</span>
+    </h1>
+    <p class="hero-sub">Led by Alla China Venkata Reddy. Providing apex-level environmental consultancy, Smart City SWM infrastructure, and bioremediation project management across India since 1996.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        View Major Projects
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="#contact" class="btn-ghost">Consult with an Expert</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">Principal Consultant & SWM Expert</div>
+        <h2 class="section-heading">Alla China <span class="green-italic">Venkata Reddy</span></h2>
+        <div class="about-tags">
+          <span class="about-tag amber">B.E. (Mechanical) - 1990</span>
+          <span class="about-tag green">Swachh Bharat Mission National Master Trainer</span>
+          <span class="about-tag">SEIAA/SEAC Expert Member</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Environmental Infrastructure" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 hero-overlay"></div>
+        <p>Beginning his SWM journey in 1996 with Excel Industries (India's first MSW-to-Compost company), Alla China Venkata Reddy has dedicated over 27 years strictly to the Integrated Municipal Solid Waste Management (ISWM) sector.</p>
+        <p>As a specialized Mechanical Engineer, he bridges the critical gap between conceptual city planning and on-the-ground operational mechanics. He has evaluated Detailed Project Reports (DPRs) for over 205 Urban Local Bodies (ULBs) and served on elite Technical Committees for the Government of Karnataka, KUIDFC, BBMP, and multiple Smart Cities.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="num">27+</div>
+            <div class="label">Years Exp.</div>
+          </div>
+          <div class="stat-item">
+            <div class="num"><span>205</span>+</div>
+            <div class="label">ULB DPRs</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">14+</div>
+            <div class="label">Legacy Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="num"><span>6</span></div>
+            <div class="label">States Served</div>
+          </div>
         </div>
+      </div>
+      <div class="about-visual reveal">
+        <canvas id="about-canvas"></canvas>
+        <div class="about-frame"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left fade-in mt-16">
-            <span class="inline-block py-1 px-3 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold tracking-wider uppercase mb-4 border border-green-400/30">
-                27+ Years of Engineering Excellence
-            </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
-                Mastering Integrated <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Solid Waste & Legacy Waste</span> Solutions
-            </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl">
-                Led by Alla China Venkata Reddy. Providing apex-level environmental consultancy, Smart City SWM infrastructure, and bioremediation project management across India since 1996.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="#portfolio" class="bg-corporate-green hover:bg-green-600 text-white px-8 py-4 rounded-sm font-bold text-lg transition-all shadow-lg hover:shadow-green-500/30">
-                    View Major Projects
-                </a>
-                <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-sm font-bold text-lg transition-all backdrop-blur-sm">
-                    Consult with an Expert
-                </a>
-            </div>
+<!-- Expertise -->
+<section class="expertise" id="expertise">
+  <div class="container">
+    <div class="expertise-header reveal">
+      <div>
+        <div class="section-label">Technical Competencies</div>
+        <h2 class="section-heading">Comprehensive <span class="green-italic">SWM Engineering</span></h2>
+      </div>
+      <p class="section-intro">Delivering specialized mechanical engineering, process consulting, and capacity building across every phase of waste management.</p>
+    </div>
+    <div class="expertise-grid">
+      <div class="expertise-card reveal">
+        <div class="expertise-num">01 — Legacy</div>
+        <div class="expertise-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+        <h3 class="expertise-title">Legacy Waste & Biomining</h3>
+        <p class="expertise-desc">End-to-end bioremediation of old dumpsites. Expertise in scientific trommel deployment, resource recovery, and screening out inert materials to reclaim valuable urban land and mitigate environmental hazards.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-num">02 — Planning</div>
+        <div class="expertise-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <h3 class="expertise-title">ISWM Micro-Planning</h3>
+        <p class="expertise-desc">Designing master plans for 100% Door-to-Door collection. Includes primary/secondary route mapping, specifying closed-bin vehicles to meet MSW Rules 2016, and establishing efficient Transfer Stations.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-num">03 — Processing</div>
+        <div class="expertise-icon"><i class="fa-solid fa-gears"></i></div>
+        <h3 class="expertise-title">Process Plant Engineering</h3>
+        <p class="expertise-desc">Technical vetting, layout finalization, and equipment inspection for Mechanical Composting Plants. Ensuring precision in Trommels, Magnetic Separators, De-stoners, and Shredders.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-num">04 — Energy</div>
+        <div class="expertise-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+        <h3 class="expertise-title">Waste-to-Energy & RDF</h3>
+        <p class="expertise-desc">Feasibility studies and implementation of Refuse Derived Fuel (RDF), Solid Combustible Fuel (SCF), Gasification technologies, and pioneering the co-processing of MSW/sludge in cement kilns to reduce CO2 emissions.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-num">05 — Smart City</div>
+        <div class="expertise-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+        <h3 class="expertise-title">Smart City ICT Solutions</h3>
+        <p class="expertise-desc">Implementing technology-driven solutions for modern cities, including GIS mapping, GPS tracking systems, route optimization, and real-time automated operational monitoring.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-num">06 — Training</div>
+        <div class="expertise-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3 class="expertise-title">Capacity Building & Training</h3>
+        <p class="expertise-desc">As a National Institutes of Urban Affairs (NIUA) trained Master Trainer, we develop custom SWM toolkits and conduct extensive training programs for ULB officers and micro-enterprise developers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Torrefaction -->
+<section class="torrefaction" id="torrefaction">
+  <canvas id="torrefaction-canvas"></canvas>
+  <div class="torrefaction-overlay">
+    <div class="torrefaction-grid">
+      <div class="reveal">
+        <span class="hero-eyebrow" style="opacity:1; animation:none; margin-bottom: 2.5rem;">
+          <i class="fa-solid fa-bolt"></i> Innovation Spotlight
+        </span>
+        <h2 class="section-heading">The Promise of <span class="italic">Torrefaction</span></h2>
+        <h3 class="section-heading" style="font-size: 1.5rem; margin-bottom: 2rem;">Transforming Trash into Green Coal</h3>
+        <p class="section-intro" style="max-width: 100%;">We are entering a <strong>New Era of Waste Management</strong>. Torrefaction is a revolutionary thermal treatment process that upgrades municipal solid waste and biomass into high-grade "Green Coal." By bridging environmental engineering with advanced energy recovery, we turn overwhelming civic liabilities into premium, sustainable fuel treasures.</p>
+        
+        <div class="torrefaction-features">
+          <div class="tor-feature">
+            <i class="fa-solid fa-compress"></i>
+            <h4>Waste Reduction</h4>
+            <p>Drastically reduces raw waste volume and mass, eliminating landfill burden effectively.</p>
+          </div>
+          <div class="tor-feature">
+            <i class="fa-solid fa-battery-full"></i>
+            <h4>Energy Density</h4>
+            <p>Produces a highly concentrated, energy-dense output optimized for combustion and industrial boilers.</p>
+          </div>
+          <div class="tor-feature">
+            <i class="fa-solid fa-fire"></i>
+            <h4>Improved Fuel Quality</h4>
+            <p>Creates a hydrophobic, easily grindable coal alternative with vastly superior storage properties.</p>
+          </div>
+          <div class="tor-feature">
+            <i class="fa-solid fa-recycle"></i>
+            <h4>Circular Economy</h4>
+            <p>Closes the loop by directly converting municipal waste into a highly profitable, renewable commodity.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Detailed About Section -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-corporate-green font-bold tracking-wider uppercase text-sm mb-2">Principal Consultant & SWM Expert</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold text-corporate-blue mb-4">Alla China Venkata Reddy</h3>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-corporate-lightBlue text-corporate-blue text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wide">B.E. (Mechanical) - 1990</span>
-                        <span class="bg-corporate-lightGreen text-corporate-green text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wide">Swachh Bharat Mission National Master Trainer</span>
-                        <span class="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wide">SEIAA/SEAC Expert Member</span>
-                    </div>
-                    
-                    <p class="text-gray-600 mb-4 text-lg leading-relaxed">
-                        Beginning his SWM journey in 1996 with Excel Industries (India's first MSW-to-Compost company), Alla China Venkata Reddy has dedicated over 27 years strictly to the Integrated Municipal Solid Waste Management (ISWM) sector. 
-                    </p>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        As a specialized Mechanical Engineer, he bridges the critical gap between conceptual city planning and on-the-ground operational mechanics. He has evaluated Detailed Project Reports (DPRs) for over 205 Urban Local Bodies (ULBs) and served on elite Technical Committees for the Government of Karnataka, KUIDFC, BBMP, and multiple Smart Cities.
-                    </p>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-gray-100 pt-8 mt-8">
-                        <div>
-                            <div class="text-3xl font-extrabold text-corporate-blue mb-1">27+</div>
-                            <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Years Exp.</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-extrabold text-corporate-green mb-1">205+</div>
-                            <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">ULB DPRs</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-extrabold text-corporate-blue mb-1">14+</div>
-                            <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Legacy Projects</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-extrabold text-corporate-green mb-1">6</div>
-                            <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">States Served</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative hidden lg:block">
-                    <!-- Professional placeholder for engineering/consulting (Fixed missing image issue) -->
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Engineering Planning" 
-                         class="rounded-sm shadow-2xl z-10 relative w-full min-h-[350px] object-cover bg-gray-200"
-                         onerror="this.onerror=null; this.src='https://placehold.co/1000x800/E6F4EA/0A2540?text=ACVR+Consultancy';">
-                    <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-corporate-lightGreen rounded-sm z-0"></div>
-                    <div class="absolute -top-6 -right-6 w-48 h-48 bg-corporate-lightBlue rounded-sm z-0"></div>
-                </div>
-            </div>
+      </div>
+      <div class="tor-visual reveal">
+        <canvas id="tor-visual-canvas"></canvas>
+        <div class="tor-visual-text">
+          <p>"Torrefaction isn't just treatment; it is the ultimate transformation of trash into a sustainable energy asset."</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Core Expertise (Services) Section -->
-    <section id="expertise" class="py-24 bg-gray-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-corporate-green font-bold tracking-wider uppercase text-sm mb-2">Technical Competencies</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-corporate-blue mb-4">Comprehensive SWM Engineering</h3>
-                <p class="text-gray-600 text-lg">Delivering specialized mechanical engineering, process consulting, and capacity building across every phase of waste management.</p>
-            </div>
+<!-- Portfolio -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="reveal" style="margin-bottom: 5rem;">
+      <div class="section-label">Track Record</div>
+      <h2 class="section-heading">Major Project <span class="green-italic">Portfolio</span></h2>
+      <p class="section-intro">A history of successfully commissioning and optimizing high-capacity municipal infrastructure across India.</p>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-mountain-sun text-corporate-green text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-bold text-corporate-blue mb-3">Legacy Waste & Biomining</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">End-to-end bioremediation of old dumpsites. Expertise in scientific trommel deployment, resource recovery, and screening out inert materials to reclaim valuable urban land and mitigate environmental hazards.</p>
-                </div>
-                <!-- Service 2 -->
-                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-truck-fast text-corporate-blue text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-bold text-corporate-blue mb-3">ISWM Micro-Planning</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Designing master plans for 100% Door-to-Door collection. Includes primary/secondary route mapping, specifying closed-bin vehicles to meet MSW Rules 2016, and establishing efficient Transfer Stations.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-gears text-corporate-green text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-bold text-corporate-blue mb-3">Process Plant Engineering</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Technical vetting, layout finalization, and equipment inspection for Mechanical Composting Plants. Ensuring precision in Trommels, Magnetic Separators, De-stoners, and Shredders.</p>
-                </div>
-                <!-- Service 4 -->
-                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-fire-flame-curved text-corporate-blue text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-bold text-corporate-blue mb-3">Waste-to-Energy & RDF</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Feasibility studies and implementation of Refuse Derived Fuel (RDF), Solid Combustible Fuel (SCF), Gasification technologies, and pioneering the co-processing of MSW/sludge in cement kilns to reduce CO2 emissions.</p>
-                </div>
-                <!-- Service 5 -->
-                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-satellite-dish text-corporate-green text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-bold text-corporate-blue mb-3">Smart City ICT Solutions</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Implementing technology-driven solutions for modern cities, including GIS mapping, GPS tracking systems, route optimization, and real-time automated operational monitoring.</p>
-                </div>
-                <!-- Service 6 -->
-                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-chalkboard-user text-corporate-blue text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-bold text-corporate-blue mb-3">Capacity Building & Training</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">As a National Institutes of Urban Affairs (NIUA) trained Master Trainer, we develop custom SWM toolkits and conduct extensive training programs for ULB officers and micro-enterprise developers.</p>
-                </div>
-            </div>
+    <div class="portfolio-category reveal">
+      <div class="portfolio-cat-header">
+        <span>01</span>
+        <h3>Smart City Initiatives</h3>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <h4>Jaipur Smart City Project</h4>
+          <span class="portfolio-role">Role: SWM Expert (via Eptisa India Pvt Ltd)</span>
+          <p class="portfolio-desc">Managed SWM operations for a city generating 1600 TPD. Engineered ICT solutions for waste tracking, designed sanitary landfill sites, and planned comprehensive WtE (Waste to Energy) implementations.</p>
         </div>
-    </section>
-
-    <!-- NEW SECTION: Innovation Spotlight - Torrefaction -->
-    <section id="torrefaction" class="py-24 bg-gradient-to-br from-corporate-blue to-[#07192b] text-white relative overflow-hidden">
-        <!-- Decorative Background Gradients -->
-        <div class="absolute top-0 right-0 -mt-32 -mr-32 w-[30rem] h-[30rem] bg-corporate-green rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 -mb-32 -ml-32 w-[30rem] h-[30rem] bg-emerald-500 rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                
-                <!-- Content Side -->
-                <div>
-                    <span class="inline-block py-1.5 px-4 rounded-sm bg-corporate-green/90 text-white text-xs font-bold tracking-widest uppercase mb-5 shadow-[0_0_15px_rgba(15,122,65,0.5)]">
-                        <i class="fa-solid fa-bolt mr-1"></i> Innovation Spotlight
-                    </span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-                        The Promise of Torrefaction
-                    </h2>
-                    <h3 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 mb-6">
-                        Transforming Trash into Green Coal
-                    </h3>
-                    
-                    <p class="text-gray-300 text-lg mb-10 leading-relaxed">
-                        We are entering a <strong>New Era of Waste Management</strong>. Torrefaction is a revolutionary thermal treatment process that upgrades municipal solid waste and biomass into high-grade "Green Coal." By bridging environmental engineering with advanced energy recovery, we turn overwhelming civic liabilities into premium, sustainable fuel treasures.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-green-500/30 text-green-400 mt-1 mr-4">
-                                <i class="fa-solid fa-compress text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-lg mb-1">Waste Reduction</h4>
-                                <p class="text-sm text-gray-400">Drastically reduces raw waste volume and mass, eliminating landfill burden effectively.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-green-500/30 text-green-400 mt-1 mr-4">
-                                <i class="fa-solid fa-battery-full text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-lg mb-1">Energy Density</h4>
-                                <p class="text-sm text-gray-400">Produces a highly concentrated, energy-dense output optimized for combustion and industrial boilers.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-green-500/30 text-green-400 mt-1 mr-4">
-                                <i class="fa-solid fa-fire text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-lg mb-1">Improved Fuel Quality</h4>
-                                <p class="text-sm text-gray-400">Creates a hydrophobic, easily grindable coal alternative with vastly superior storage properties.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-green-500/30 text-green-400 mt-1 mr-4">
-                                <i class="fa-solid fa-recycle text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-lg mb-1">Circular Economy</h4>
-                                <p class="text-sm text-gray-400">Closes the loop by directly converting municipal waste into a highly profitable, renewable commodity.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Visual Side -->
-                <div class="relative hidden lg:block">
-                    <div class="relative rounded-sm overflow-hidden shadow-2xl border border-white/10 group">
-                        <!-- Updated to a highly relevant thermal/glowing coals image for Torrefaction -->
-                        <img src="https://images.unsplash.com/photo-1533413926839-4475477dae74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Torrefaction Green Coal Process" 
-                             class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 min-h-[400px] bg-gray-900"
-                             onerror="this.onerror=null; this.src='https://placehold.co/1000x800/0A2540/E6F4EA?text=Green+Coal+Processing';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/40 to-transparent"></div>
-                        <div class="absolute bottom-8 left-8 right-8">
-                            <div class="border-l-4 border-corporate-green pl-4">
-                                <p class="text-white font-semibold text-xl italic leading-snug">"Torrefaction isn't just treatment; it is the ultimate transformation of trash into a sustainable energy asset."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+        <div class="portfolio-item">
+          <h4>Srinagar Smart City</h4>
+          <span class="portfolio-role">Role: Senior SWM Expert (via Fortress Infracon)</span>
+          <p class="portfolio-desc">Provided senior-level consultancy and strategic planning for Solid Waste Management infrastructure adaptation in challenging climatic and geographical conditions.</p>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Detailed Project Portfolio -->
-    <section id="portfolio" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-corporate-green font-bold tracking-wider uppercase text-sm mb-2">Track Record</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-corporate-blue mb-4">Major Project Portfolio</h3>
-                <p class="text-gray-600 text-lg">A history of successfully commissioning and optimizing high-capacity municipal infrastructure across India.</p>
-            </div>
-
-            <div class="space-y-12">
-                <!-- Category 1 -->
-                <div>
-                    <h4 class="text-2xl font-bold text-gray-800 border-b-2 border-corporate-lightGreen pb-2 mb-6">Smart City Initiatives</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-blue">
-                            <h5 class="font-bold text-lg text-corporate-blue">Jaipur Smart City Project</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: SWM Expert (via Eptisa India Pvt Ltd)</p>
-                            <p class="text-sm text-gray-700">Managed SWM operations for a city generating 1600 TPD. Engineered ICT solutions for waste tracking, designed sanitary landfill sites, and planned comprehensive WtE (Waste to Energy) implementations.</p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-blue">
-                            <h5 class="font-bold text-lg text-corporate-blue">Srinagar Smart City</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: Senior SWM Expert (via Fortress Infracon)</p>
-                            <p class="text-sm text-gray-700">Provided senior-level consultancy and strategic planning for Solid Waste Management infrastructure adaptation in challenging climatic and geographical conditions.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category 2 -->
-                <div>
-                    <h4 class="text-2xl font-bold text-gray-800 border-b-2 border-corporate-lightGreen pb-2 mb-6">High-Capacity Integrated SWM & Processing</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-green">
-                            <h5 class="font-bold text-lg text-corporate-blue">Puducherry ISWM (400 TPD)</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: GM Operations, Kivar Environ</p>
-                            <p class="text-sm text-gray-700">Successfully implemented a 400 TPD facility. Designed micro-level plans for vehicle deployment, manpower, and complete Door-to-Door collection logistics.</p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-green">
-                            <h5 class="font-bold text-lg text-corporate-blue">Bhilai & Durg ISWM</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: GM Processing & Technology</p>
-                            <p class="text-sm text-gray-700">Implemented 400 TPD D2D collection mechanisms, road sweeping, and drain cleaning across major cities in Chhattisgarh.</p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-green">
-                            <h5 class="font-bold text-lg text-corporate-blue">Bangalore WtE (1000 TPD)</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: Lead SWM Designer</p>
-                            <p class="text-sm text-gray-700">Designed collection, transfer systems, and integrated processing for a massive 1000 TPD combined Compost and Waste-to-Energy facility.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category 3 -->
-                <div>
-                    <h4 class="text-2xl font-bold text-gray-800 border-b-2 border-corporate-lightGreen pb-2 mb-6">Legacy Waste & Biomining</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-blue">
-                            <h5 class="font-bold text-lg text-corporate-blue">Tamilnadu Statewide Biomining</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: Technical Advisor, Shree Bommu Industries</p>
-                            <p class="text-sm text-gray-700">Currently leading extensive legacy waste management. Successfully completed bioremediation in 6 Urban Local Bodies (ULBs) with 8 more currently under active progress.</p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-corporate-blue">
-                            <h5 class="font-bold text-lg text-corporate-blue">Telangana & Andhra Pradesh Initiatives</h5>
-                            <p class="text-sm text-gray-500 mb-3">Role: Advisor / Team Leader</p>
-                            <p class="text-sm text-gray-700">Serving as Technical Advisor and Independent Engineer for legacy waste management projects across AP ULBs and the Hyderabad/Tirupathi/Tirumala regions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="portfolio-category reveal">
+      <div class="portfolio-cat-header">
+        <span>02</span>
+        <h3>High-Capacity Integrated SWM & Processing</h3>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item amber">
+          <h4>Puducherry ISWM (400 TPD)</h4>
+          <span class="portfolio-role">Role: GM Operations, Kivar Environ</span>
+          <p class="portfolio-desc">Successfully implemented a 400 TPD facility. Designed micro-level plans for vehicle deployment, manpower, and complete Door-to-Door collection logistics.</p>
         </div>
-    </section>
-
-    <!-- Government Committees & Advisory -->
-    <section id="committees" class="py-24 bg-corporate-blue text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Architecture" class="w-full h-full object-cover">
+        <div class="portfolio-item amber">
+          <h4>Bhilai & Durg ISWM</h4>
+          <span class="portfolio-role">Role: GM Processing & Technology</span>
+          <p class="portfolio-desc">Implemented 400 TPD D2D collection mechanisms, road sweeping, and drain cleaning across major cities in Chhattisgarh.</p>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-green-400 font-bold tracking-wider uppercase text-sm mb-2">Authority & Governance</h2>
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">Apex Government Committee Roles</h3>
-                <p class="text-gray-300 text-lg">Trusted to define standards, evaluate technical bids, and monitor state-wide infrastructure implementations.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white/10 backdrop-blur-md p-8 rounded-sm border border-white/20">
-                    <h4 class="text-xl font-bold text-green-400 mb-4">Karnataka Urban Infrastructure Development & Finance Corp (KUIDFC) & BBMP</h4>
-                    <ul class="space-y-3 text-gray-200 text-sm list-none timeline-border pl-4 ml-2">
-                        <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">Appointed as Design Expert (SWM) to establish municipal waste processing facilities in Bangalore.</li>
-                        <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">Authorized site inspector for validating heavy machinery (Conveyors, Trommels, Magnetic Separators) against tender specifications.</li>
-                        <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">Monitored mechanical composting plants at Subbarayanapalya, Linghadeeranahalli, Doddabidarakallu, Kannahalli, Sigehalli, Chikkanagamangala, and KCDC.</li>
-                        <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">Core member of Technical & Financial Negotiation Committees for vendor selection.</li>
-                    </ul>
-                </div>
-                
-                <div class="space-y-8">
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-sm border border-white/20">
-                        <h4 class="text-xl font-bold text-green-400 mb-4">Swachh Bharat Mission (SBM) - Karnataka</h4>
-                        <ul class="space-y-3 text-gray-200 text-sm list-none timeline-border pl-4 ml-2">
-                            <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">State Level Technical Committee Member for Evaluating and guiding ULB proposals.</li>
-                            <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">Technical Approval Committee member under the Directorate of Municipal Administration for vehicle and machinery procurement.</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-sm border border-white/20">
-                        <h4 class="text-xl font-bold text-green-400 mb-4">SEIAA / SEAC</h4>
-                        <ul class="space-y-3 text-gray-200 text-sm list-none timeline-border pl-4 ml-2">
-                            <li class="relative before:absolute before:-left-[21px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-green-400 before:rounded-full">Professional Expert Member involved in environmental impact evaluations and regulatory compliance standard-setting.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="portfolio-item amber">
+          <h4>Bangalore WtE (1000 TPD)</h4>
+          <span class="portfolio-role">Role: Lead SWM Designer</span>
+          <p class="portfolio-desc">Designed collection, transfer systems, and integrated processing for a massive 1000 TPD combined Compost and Waste-to-Energy facility.</p>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Comprehensive Contact Section -->
-    <section id="contact" class="py-24 bg-gray-50 border-t border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-sm shadow-2xl border-t-4 border-corporate-green overflow-hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-5">
-                    
-                    <div class="lg:col-span-2 bg-corporate-lightGreen p-10 flex flex-col justify-center border-r border-green-100">
-                        <h2 class="text-3xl font-bold text-corporate-blue mb-4">Engage the Expert</h2>
-                        <p class="text-gray-700 text-sm leading-relaxed mb-8">Whether you are an Urban Local Body requiring DPR evaluation, a Smart City planning ICT integration, or a private firm navigating complex biomining operations, secure high-level engineering consultancy today.</p>
-                        <div class="mt-auto">
-                            <p class="text-xs text-corporate-green font-bold uppercase tracking-wider">Freelance Consultant</p>
-                            <p class="text-corporate-blue font-extrabold text-2xl">Alla China Venkata Reddy</p>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-3 p-10 md:p-12">
-                        <div class="space-y-8">
-                            <div class="flex items-start group">
-                                <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-corporate-green text-xl group-hover:bg-corporate-green group-hover:text-white transition-colors">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div class="ml-6">
-                                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Direct Contact Lines</p>
-                                    <a href="tel:+918050633907" class="block text-gray-800 font-bold text-lg hover:text-corporate-green transition-colors">+91 8050633907</a>
-                                    <a href="tel:+919686682258" class="block text-gray-800 font-bold text-lg hover:text-corporate-green transition-colors mt-1">+91 9686682258</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start group">
-                                <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-corporate-green text-xl group-hover:bg-corporate-green group-hover:text-white transition-colors">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div class="ml-6">
-                                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Email Address</p>
-                                    <a href="mailto:achvreddy@gmail.com" class="text-gray-800 font-bold text-lg hover:text-corporate-green transition-colors break-all">achvreddy@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start group">
-                                <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-corporate-green text-xl group-hover:bg-corporate-green group-hover:text-white transition-colors">
-                                    <i class="fa-solid fa-building"></i>
-                                </div>
-                                <div class="ml-6">
-                                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Registered Base of Operations</p>
-                                    <p class="text-gray-700 font-medium leading-relaxed text-sm">
-                                        Flat No: 501, 5th Floor<br>
-                                        Concrete Sarigama Apartment<br>
-                                        Opposite to SBI Bank<br>
-                                        Harivillu to Lancohills Road<br>
-                                        Manikonda Jagir, Hyderabad<br>
-                                        Telangana - 500089
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    <div class="portfolio-category reveal">
+      <div class="portfolio-cat-header">
+        <span>03</span>
+        <h3>Legacy Waste & Biomining</h3>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <h4>Tamilnadu Statewide Biomining</h4>
+          <span class="portfolio-role">Role: Technical Advisor, Shree Bommu Industries</span>
+          <p class="portfolio-desc">Currently leading extensive legacy waste management. Successfully completed bioremediation in 6 Urban Local Bodies (ULBs) with 8 more currently under active progress.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#07192b] pt-12 pb-8 border-t border-blue-900/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-                <div class="flex items-center gap-2 mb-4 md:mb-0">
-                    <i class="fa-solid fa-leaf text-corporate-green"></i>
-                    <span class="font-bold text-white tracking-tight">ACVR CONSULTANCY</span>
-                </div>
-                <div class="text-center md:text-right">
-                    <p>&copy; 2026 ACVR Consultancy. All rights reserved.</p>
-                    <p class="mt-1 text-xs text-gray-500">Excellence in Integrated Municipal Solid Waste Management & Environmental Engineering</p>
-                </div>
-            </div>
+        <div class="portfolio-item">
+          <h4>Telangana & Andhra Pradesh Initiatives</h4>
+          <span class="portfolio-role">Role: Advisor / Team Leader</span>
+          <p class="portfolio-desc">Serving as Technical Advisor and Independent Engineer for legacy waste management projects across AP ULBs and the Hyderabad/Tirupathi/Tirumala regions.</p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- Committees -->
+<section class="committees" id="committees">
+  <canvas id="committees-canvas"></canvas>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Authority & Governance</div>
+      <h2 class="section-heading">Apex Government <span class="green-italic">Committee Roles</span></h2>
+      <p class="section-intro">Trusted to define standards, evaluate technical bids, and monitor state-wide infrastructure implementations.</p>
+    </div>
+    <div class="committees-grid">
+      <div class="committee-card reveal">
+        <h4>Karnataka Urban Infrastructure Development & Finance Corp (KUIDFC) & BBMP</h4>
+        <ul class="committee-list">
+          <li>Appointed as Design Expert (SWM) to establish municipal waste processing facilities in Bangalore.</li>
+          <li>Authorized site inspector for validating heavy machinery (Conveyors, Trommels, Magnetic Separators) against tender specifications.</li>
+          <li>Monitored mechanical composting plants at Subbarayanapalya, Linghadeeranahalli, Doddabidarakallu, Kannahalli, Sigehalli, Chikkanagamangala, and KCDC.</li>
+          <li>Core member of Technical & Financial Negotiation Committees for vendor selection.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="committee-card reveal" style="margin-bottom: 2rem;">
+          <h4>Swachh Bharat Mission (SBM) - Karnataka</h4>
+          <ul class="committee-list">
+            <li>State Level Technical Committee Member for Evaluating and guiding ULB proposals.</li>
+            <li>Technical Approval Committee member under the Directorate of Municipal Administration for vehicle and machinery procurement.</li>
+          </ul>
+        </div>
+        <div class="committee-card reveal">
+          <h4>SEIAA / SEAC</h4>
+          <ul class="committee-list">
+            <li>Professional Expert Member involved in environmental impact evaluations and regulatory compliance standard-setting.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-label">Engage the Expert</div>
+        <h2 class="section-heading">Let's build what <span class="italic">comes next.</span></h2>
+        <p>Whether you are an Urban Local Body requiring DPR evaluation, a Smart City planning ICT integration, or a private firm navigating complex biomining operations, secure high-level engineering consultancy today.</p>
+        
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <div class="contact-detail-label">Direct Contact Lines</div>
+            <a href="tel:+918050633907" class="contact-detail-value">+91 8050633907</a>
+            <a href="tel:+919686682258" class="contact-detail-value">+91 9686682258</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div class="contact-detail-label">Email Address</div>
+            <a href="mailto:achvreddy@gmail.com" class="contact-detail-value">achvreddy@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fa-solid fa-building"></i></div>
+          <div>
+            <div class="contact-detail-label">Registered Base of Operations</div>
+            <div class="contact-detail-value" style="font-weight: 400; font-size: 0.9rem; line-height: 1.6;">
+              Flat No: 501, 5th Floor, Concrete Sarigama Apartment, Opposite to SBI Bank, Harivillu to Lancohills Road, Manikonda Jagir, Hyderabad, Telangana - 500089
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <form id="engage-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Organization</label>
+            <input type="text" required placeholder="ULB / Company / Agency">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" required placeholder="you@organization.com">
+          </div>
+          <div class="form-group">
+            <label>Nature of Engagement</label>
+            <select>
+              <option>Legacy Waste & Biomining</option>
+              <option>ISWM Micro-Planning</option>
+              <option>Process Plant Engineering</option>
+              <option>Waste-to-Energy & RDF</option>
+              <option>Smart City ICT Solutions</option>
+              <option>Capacity Building & Training</option>
+              <option>Torrefaction / Green Coal</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Brief</label>
+            <textarea placeholder="Tell us about your project requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary">
+            Send Brief
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="nav-brand-dot"></div>
+        ACVR Consultancy
+      </div>
+      <p class="footer-tagline">Excellence in Integrated Municipal Solid Waste Management & Environmental Engineering. Led by Alla China Venkata Reddy, with over 27 years of dedicated expertise.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Expertise</h4>
+      <ul>
+        <li><a href="#expertise">Legacy Waste & Biomining</a></li>
+        <li><a href="#expertise">ISWM Micro-Planning</a></li>
+        <li><a href="#expertise">Process Plant Engineering</a></li>
+        <li><a href="#expertise">Waste-to-Energy & RDF</a></li>
+        <li><a href="#torrefaction">Torrefaction / Green Coal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About ACVR</a></li>
+        <li><a href="#portfolio">Project Portfolio</a></li>
+        <li><a href="#committees">Govt. Advisory Roles</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 ACVR Consultancy. All rights reserved.</div>
+    <div>Crafted for a sustainable future.</div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <div>Brief received. We will be in touch within 48 hours.</div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+// === Custom Cursor ===
+const cursor = document.querySelector('.cursor');
+const cursorRing = document.querySelector('.cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+});
+
+function animateCursor() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+  cursorRing.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px)`;
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover');
+    cursorRing.classList.add('hover');
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+    cursorRing.classList.remove('hover');
+  });
+});
+
+// === Preloader ===
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('done');
+  }, 1600);
+});
+
+// === Nav scroll state ===
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// === Reveal animations ===
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(r => revealObserver.observe(r));
+
+// === Smooth anchor scroll ===
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// === Mouse tracking for 3D ===
+const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+window.addEventListener('mousemove', (e) => {
+  mouse.tx = (e.clientX / window.innerWidth - 0.5);
+  mouse.ty = (e.clientY / window.innerHeight - 0.5);
+});
+
+// === Hero 3D Scene: Topographic Terrain & Particles ===
+const heroCanvas = document.getElementById('hero-canvas');
+const heroScene = new THREE.Scene();
+heroScene.fog = new THREE.FogExp2(0x07090a, 0.04);
+
+const heroCamera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+heroCamera.position.set(0, 4, 12);
+
+const heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
+heroRenderer.setSize(window.innerWidth, window.innerHeight);
+heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+heroScene.add(new THREE.AmbientLight(0xffffff, 0.3));
+const heroLight1 = new THREE.PointLight(0x4caf50, 2.5, 30);
+heroLight1.position.set(0, 5, 0);
+heroScene.add(heroLight1);
+const heroLight2 = new THREE.PointLight(0xd4a574, 1.5, 25);
+heroLight2.position.set(5, 2, 5);
+heroScene.add(heroLight2);
+
+// Topographic Wireframe Terrain
+const terrainGeo = new THREE.PlaneGeometry(40, 40, 60, 60);
+const terrainMat = new THREE.MeshBasicMaterial({
+  color: 0x2e7d52,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.35
+});
+const terrain = new THREE.Mesh(terrainGeo, terrainMat);
+terrain.rotation.x = -Math.PI / 2.5;
+terrain.position.y = -3;
+heroScene.add(terrain);
+
+// Store original positions for animation
+const terrainPos = terrainGeo.attributes.position.array.slice();
+
+// Floating Particles (Green/Amber mix)
+const isMobile = window.innerWidth < 768;
+const particleCount = isMobile ? 1500 : 3000;
+const positions = new Float32Array(particleCount * 3);
+const colors = new Float32Array(particleCount * 3);
+
+const greenColor = new THREE.Color(0x4caf50);
+const amberColor = new THREE.Color(0xd4a574);
+
+for (let i = 0; i < particleCount; i++) {
+  const radius = 5 + Math.random() * 15;
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos(2 * Math.random() - 1);
+  positions[i*3] = radius * Math.sin(phi) * Math.cos(theta);
+  positions[i*3+1] = (Math.random() - 0.5) * 15;
+  positions[i*3+2] = radius * Math.cos(phi);
+  
+  const mix = Math.random();
+  const c = greenColor.clone().lerp(amberColor, mix * 0.6);
+  const intensity = 0.4 + Math.random() * 0.6;
+  colors[i*3] = c.r * intensity;
+  colors[i*3+1] = c.g * intensity;
+  colors[i*3+2] = c.b * intensity;
+}
+
+const particleGeo = new THREE.BufferGeometry();
+particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const particleMat = new THREE.PointsMaterial({
+  size: 0.06,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.9,
+  blending: THREE.AdditiveBlending,
+  sizeAttenuation: true,
+  depthWrite: false
+});
+const particles = new THREE.Points(particleGeo, particleMat);
+heroScene.add(particles);
+
+// Central glowing core (representing energy/green coal)
+const coreGeo = new THREE.IcosahedronGeometry(1.2, 0);
+const coreMat = new THREE.MeshStandardMaterial({
+  color: 0x0c1110,
+  metalness: 0.9,
+  roughness: 0.2,
+  flatShading: true
+});
+const core = new THREE.Mesh(coreGeo, coreMat);
+heroScene.add(core);
+
+// Core wireframe overlay
+const coreWireGeo = new THREE.IcosahedronGeometry(1.25, 0);
+const coreWireMat = new THREE.MeshBasicMaterial({
+  color: 0x4caf50,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.6
+});
+const coreWire = new THREE.Mesh(coreWireGeo, coreWireMat);
+heroScene.add(coreWire);
+
+// Glow halo
+const glowGeo = new THREE.SphereGeometry(1.8, 32, 32);
+const glowMat = new THREE.MeshBasicMaterial({
+  color: 0x4caf50,
+  transparent: true,
+  opacity: 0.06,
+  side: THREE.BackSide,
+  blending: THREE.AdditiveBlending
+});
+const glow = new THREE.Mesh(glowGeo, glowMat);
+heroScene.add(glow);
+
+let scrollY = 0;
+window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+const clock = new THREE.Clock();
+let heroVisible = true;
+const heroSection = document.querySelector('.hero');
+const heroVisObserver = new IntersectionObserver((entries) => {
+  heroVisible = entries[0].isIntersecting;
+}, { threshold: 0 });
+heroVisObserver.observe(heroSection);
+
+function animateHero() {
+  requestAnimationFrame(animateHero);
+  if (!heroVisible) return;
+  
+  const t = clock.getElapsedTime();
+  
+  // Animate terrain
+  const pos = terrainGeo.attributes.position.array;
+  for (let i = 0; i < pos.length; i += 3) {
+    const x = terrainPos[i];
+    const y = terrainPos[i+1];
+    const dist = Math.sqrt(x*x + y*y);
+    pos[i+2] = Math.sin(dist * 0.5 - t * 0.8) * 0.8 + Math.cos(x * 0.3 + t * 0.5) * 0.4;
+  }
+  terrainGeo.attributes.position.needsUpdate = true;
+  
+  // Animate core
+  core.rotation.x = t * 0.2;
+  core.rotation.y = t * 0.3;
+  coreWire.rotation.x = t * 0.2;
+  coreWire.rotation.y = t * 0.3;
+  
+  particles.rotation.y = t * 0.03;
+  particles.rotation.x = t * 0.015;
+  
+  // Mouse follow
+  mouse.x += (mouse.tx - mouse.x) * 0.04;
+  mouse.y += (mouse.ty - mouse.y) * 0.04;
+  
+  heroCamera.position.x = mouse.x * 3;
+  heroCamera.position.y = 4 - mouse.y * 2;
+  heroCamera.position.z = Math.max(8, 12 - scrollY * 0.005);
+  heroCamera.lookAt(0, 0, 0);
+  
+  heroLight1.intensity = 2 + Math.sin(t * 1.5) * 0.5;
+  glow.scale.setScalar(1 + Math.sin(t * 1.2) * 0.05);
+  
+  heroRenderer.render(heroScene, heroCamera);
+}
+animateHero();
+
+window.addEventListener('resize', () => {
+  heroCamera.aspect = window.innerWidth / window.innerHeight;
+  heroCamera.updateProjectionMatrix();
+  heroRenderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// === About 3D Scene: Abstract Globe/Network ===
+const aboutCanvas = document.getElementById('about-canvas');
+const aboutScene = new THREE.Scene();
+const aboutCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+aboutCamera.position.z = 5.5;
+const aboutRenderer = new THREE.WebGLRenderer({ canvas: aboutCanvas, alpha: true, antialias: true });
+aboutRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+function resizeAbout() {
+  const rect = aboutCanvas.getBoundingClientRect();
+  if (rect.width === 0) return;
+  aboutRenderer.setSize(rect.width, rect.height, false);
+  aboutCamera.aspect = rect.width / rect.height;
+  aboutCamera.updateProjectionMatrix();
+}
+resizeAbout();
+window.addEventListener('resize', resizeAbout);
+
+// Wireframe Sphere
+const sphereGeo = new THREE.SphereGeometry(2, 24, 16);
+const sphereMat = new THREE.MeshBasicMaterial({
+  color: 0x2e7d52,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.4
+});
+const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+aboutScene.add(sphere);
+
+// Inner glowing core
+const aboutCoreGeo = new THREE.SphereGeometry(1, 32, 32);
+const aboutCoreMat = new THREE.MeshBasicMaterial({
+  color: 0xd4a574,
+  transparent: true,
+  opacity: 0.15,
+  blending: THREE.AdditiveBlending
+});
+const aboutCore = new THREE.Mesh(aboutCoreGeo, aboutCoreMat);
+aboutScene.add(aboutCore);
+
+// Nodes on sphere surface
+const nodes = [];
+const nodeCount = 40;
+for (let i = 0; i < nodeCount; i++) {
+  const nodeGeo = new THREE.SphereGeometry(0.04, 8, 8);
+  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x4caf50 });
+  const node = new THREE.Mesh(nodeGeo, nodeMat);
+  const phi = Math.acos(2 * Math.random() - 1);
+  const theta = Math.random() * Math.PI * 2;
+  node.userData = { phi, theta, radius: 2 };
+  nodes.push(node);
+  aboutScene.add(node);
+}
+
+let aboutVisible = false;
+const aboutVisObserver = new IntersectionObserver((entries) => {
+  aboutVisible = entries[0].isIntersecting;
+}, { threshold: 0 });
+aboutVisObserver.observe(document.querySelector('.about'));
+
+function animateAbout() {
+  requestAnimationFrame(animateAbout);
+  if (!aboutVisible) return;
+  
+  const t = clock.getElapsedTime();
+  sphere.rotation.y = t * 0.15;
+  sphere.rotation.x = t * 0.05;
+  
+  nodes.forEach((n, i) => {
+    const angle = t * 0.1 + i;
+    n.position.x = n.userData.radius * Math.sin(n.userData.phi) * Math.cos(n.userData.theta + t * 0.1);
+    n.position.y = n.userData.radius * Math.sin(n.userData.phi) * Math.sin(n.userData.theta + t * 0.1);
+    n.position.z = n.userData.radius * Math.cos(n.userData.phi);
+    n.scale.setScalar(0.8 + Math.sin(t * 2 + i) * 0.4);
+  });
+  
+  aboutCore.scale.setScalar(1 + Math.sin(t * 1.5) * 0.1);
+  
+  aboutRenderer.render(aboutScene, aboutCamera);
+}
+animateAbout();
+
+// === Torrefaction Background Canvas: Flowing Heat/Particles ===
+const torCanvas = document.getElementById('torrefaction-canvas');
+const torScene = new THREE.Scene();
+const torCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+torCamera.position.z = 10;
+const torRenderer = new THREE.WebGLRenderer({ canvas: torCanvas, alpha: true, antialias: true });
+torRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+function resizeTor() {
+  torRenderer.setSize(window.innerWidth, window.innerHeight, false);
+  torCamera.aspect = window.innerWidth / window.innerHeight;
+  torCamera.updateProjectionMatrix();
+}
+resizeTor();
+window.addEventListener('resize', resizeTor);
+
+const torParticleCount = isMobile ? 800 : 1500;
+const torPositions = new Float32Array(torParticleCount * 3);
+const torColors = new Float32Array(torParticleCount * 3);
+
+for (let i = 0; i < torParticleCount; i++) {
+  torPositions[i*3] = (Math.random() - 0.5) * 30;
+  torPositions[i*3+1] = (Math.random() - 0.5) * 20;
+  torPositions[i*3+2] = (Math.random() - 0.5) * 15;
+  
+  const c = amberColor.clone().lerp(new THREE.Color(0xc2410c), Math.random());
+  const intensity = 0.3 + Math.random() * 0.7;
+  torColors[i*3] = c.r * intensity;
+  torColors[i*3+1] = c.g * intensity;
+  torColors[i*3+2] = c.b * intensity;
+}
+
+const torGeo = new THREE.BufferGeometry();
+torGeo.setAttribute('position', new THREE.BufferAttribute(torPositions, 3));
+torGeo.setAttribute('color', new THREE.BufferAttribute(torColors, 3));
+const torMat = new THREE.PointsMaterial({
+  size: 0.08,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.6,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false
+});
+const torPoints = new THREE.Points(torGeo, torMat);
+torScene.add(torPoints);
+
+let torVisible = false;
+const torVisObserver = new IntersectionObserver((entries) => {
+  torVisible = entries[0].isIntersecting;
+}, { threshold: 0 });
+torVisObserver.observe(document.querySelector('.torrefaction'));
+
+function animateTor() {
+  requestAnimationFrame(animateTor);
+  if (!torVisible) return;
+  
+  const t = clock.getElapsedTime();
+  torPoints.rotation.y = t * 0.02;
+  torPoints.rotation.x = t * 0.01;
+  
+  torRenderer.render(torScene, torCamera);
+}
+animateTor();
+
+// === Torrefaction Visual Canvas: Glowing Energy Sphere ===
+const torVisCanvas = document.getElementById('tor-visual-canvas');
+const torVisScene = new THREE.Scene();
+const torVisCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+torVisCamera.position.z = 4;
+const torVisRenderer = new THREE.WebGLRenderer({ canvas: torVisCanvas, alpha: true, antialias: true });
+torVisRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+function resizeTorVis() {
+  const rect = torVisCanvas.getBoundingClientRect();
+  if (rect.width === 0) return;
+  torVisRenderer.setSize(rect.width, rect.height, false);
+  torVisCamera.aspect = rect.width / rect.height;
+  torVisCamera.updateProjectionMatrix();
+}
+resizeTorVis();
+window.addEventListener('resize', resizeTorVis);
+
+// Glowing distorted sphere
+const torSphereGeo = new THREE.IcosahedronGeometry(1.2, 2);
+const torSphereMat = new THREE.MeshBasicMaterial({
+  color: 0xd4a574,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.8
+});
+const torSphere = new THREE.Mesh(torSphereGeo, torSphereMat);
+torVisScene.add(torSphere);
+
+// Inner glow
+const torGlowGeo = new THREE.SphereGeometry(1, 32, 32);
+const torGlowMat = new THREE.MeshBasicMaterial({
+  color: 0xe8b574,
+  transparent: true,
+  opacity: 0.2,
+  blending: THREE.AdditiveBlending
+});
+const torGlow = new THREE.Mesh(torGlowGeo, torGlowMat);
+torVisScene.add(torGlow);
+
+// Orbital particles
+const torOrbCount = 200;
+const torOrbPos = new Float32Array(torOrbCount * 3);
+for (let i = 0; i < torOrbCount; i++) {
+  const r = 1.5 + Math.random() * 0.8;
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos(2 * Math.random() - 1);
+  torOrbPos[i*3] = r * Math.sin(phi) * Math.cos(theta);
+  torOrbPos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+  torOrbPos[i*3+2] = r * Math.cos(phi);
+}
+const torOrbGeo = new THREE.BufferGeometry();
+torOrbGeo.setAttribute('position', new THREE.BufferAttribute(torOrbPos, 3));
+const torOrbMat = new THREE.PointsMaterial({
+  color: 0xc2410c,
+  size: 0.03,
+  transparent: true,
+  opacity: 0.8,
+  blending: THREE.AdditiveBlending
+});
+const torOrbPoints = new THREE.Points(torOrbGeo, torOrbMat);
+torVisScene.add(torOrbPoints);
+
+function animateTorVis() {
+  requestAnimationFrame(animateTorVis);
+  if (!torVisible) return;
+  
+  const t = clock.getElapsedTime();
+  torSphere.rotation.x = t * 0.2;
+  torSphere.rotation.y = t * 0.3;
+  torGlow.scale.setScalar(1 + Math.sin(t * 2) * 0.1);
+  torOrbPoints.rotation.y = t * 0.15;
+  torOrbPoints.rotation.x = t * 0.1;
+  
+  torVisRenderer.render(torVisScene, torVisCamera);
+}
+animateTorVis();
+
+// === Committees Canvas: Grid Structure ===
+const commCanvas = document.getElementById('committees-canvas');
+const commScene = new THREE.Scene();
+const commCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+commCamera.position.z = 12;
+const commRenderer = new THREE.WebGLRenderer({ canvas: commCanvas, alpha: true, antialias: true });
+commRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+function resizeComm() {
+  commRenderer.setSize(window.innerWidth, window.innerHeight, false);
+  commCamera.aspect = window.innerWidth / window.innerHeight;
+  commCamera.updateProjectionMatrix();
+}
+resizeComm();
+window.addEventListener('resize', resizeComm);
+
+// Grid network
+const commGrid = new THREE.GridHelper(30, 20, 0x2e7d52, 0x2e7d52);
+commGrid.material.opacity = 0.15;
+commGrid.material.transparent = true;
+commGrid.rotation.x = Math.PI / 3;
+commScene.add(commGrid);
+
+const commGrid2 = new THREE.GridHelper(30, 20, 0x2e7d52, 0x2e7d52);
+commGrid2.material.opacity = 0.1;
+commGrid2.material.transparent = true;
+commGrid2.rotation.x = -Math.PI / 3;
+commGrid2.position.y = -2;
+commScene.add(commGrid2);
+
+let commVisible = false;
+const commVisObserver = new IntersectionObserver((entries) => {
+  commVisible = entries[0].isIntersecting;
+}, { threshold: 0 });
+commVisObserver.observe(document.querySelector('.committees'));
+
+function animateComm() {
+  requestAnimationFrame(animateComm);
+  if (!commVisible) return;
+  
+  const t = clock.getElapsedTime();
+  commGrid.rotation.z = t * 0.02;
+  commGrid2.rotation.z = -t * 0.02;
+  
+  commRenderer.render(commScene, commCamera);
+}
+animateComm();
+
+// === Form submission ===
+document.getElementById('engage-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4500);
+  e.target.reset();
+});
+
+// === Expertise cards 3D tilt ===
+document.querySelectorAll('.expertise-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(1200px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg) translateZ(0)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+</script>
 </body>
 </html>
